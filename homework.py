@@ -124,8 +124,8 @@ if __name__ == '__main__':
     ]
 
     for workout_type, data in packages:
-        try:
-            training = read_package(workout_type, data)
-            main(training)
-        except AttributeError:
+        training = read_package(workout_type, data)
+        if training is None:
             print('Ошибка чтения данных!')
+        else:
+            main(training)
